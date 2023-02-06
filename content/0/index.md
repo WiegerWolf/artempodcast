@@ -1,8 +1,7 @@
 ---
 title: подкаст подкаст подкаст подкаст
 date: 2019-10-16
-audio: '0.ogg'
-audioMp3: '0.mp3'
+audio: 'https://artempodcast-mp3.s3.nl-ams.scw.cloud/0.mp3'
 ---
 
 - вступление

@@ -57,8 +57,7 @@
 			<itunes:summary>{{ .Summary | plainify }}</itunes:summary>
 			<googleplay:description>{{ .Summary  | plainify }}</googleplay:description>
 			{{ "<content:encoded><![CDATA[" | safeHTML }}{{ .Content | safeHTML }}{{"]]></content:encoded>" | safeHTML}}
-			<enclosure url="{{ .Permalink }}{{ .Params.AudioMp3 }}" {{with .Params.podcast_bytes}}length="{{ . }}"{{ end }} type="audio/mp3" />
-			<enclosure url="{{ .Permalink }}{{ .Params.Audio }}" {{with .Params.podcast_bytes}}length="{{ . }}"{{ end }} type="audio/ogg" />
+			<enclosure url="{{ .Params.Audio }}" {{with .Params.podcast_bytes}}length="{{ . }}"{{ end }} type="audio/mp3" />
         {{- with .Params.explicit -}}
             <itunes:explicit>{{ . }}</itunes:explicit>
             <googleplay:explicit>{{ . }}</googleplay:explicit>
