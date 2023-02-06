@@ -15,19 +15,23 @@
 #theme = "ananke"
 theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
 
-baseurl = "https://pages.gitlab.io/hugo/"
-title = "GitLab Pages and Hugo"
+baseurl = "https://artempodcast.com"
+title = "ArtemPodcast"
 contentdir    = "content"
 layoutdir     = "layouts"
 publishdir    = "public"
-languageCode = "en-us"
+languageCode = "ru-ru"
 resourceDir = "../resources"
 
-DefaultContentLanguage = "en"
+DefaultContentLanguage = "ru"
 SectionPagesMenu = "main"
 Paginate = 3 # this is set low for demonstrating with dummy content. Set to a higher number
 googleAnalytics = ""
 enableRobotsTXT = true
+
+[author]
+email = "artem+podcast@tsatsin.com"
+name = "Artem"
 
 [languages]
   [languages.en]
@@ -45,6 +49,7 @@ enableRobotsTXT = true
   filename = "sitemap.xml"
 
 [params]
+  logo = "https://artempodcast.com/logo.png"
   text_color = ""
   author = ""
   favicon = ""
