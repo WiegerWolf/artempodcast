@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <audio controls src="{{.Params.Audio}}">
+        <audio controls src="{{ .Site.Params.Media }}{{.Params.Audio}}">
             <a href="{{ .Site.Params.Media }}{{.Params.Audio}}">Скачать mp3 файл подкаста</a>
         </audio>
         {{.Content}}
