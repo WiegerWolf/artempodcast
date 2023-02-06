@@ -23,7 +23,7 @@ publishdir    = "public"
 languageCode = "ru-ru"
 resourceDir = "../resources"
 
-DefaultContentLanguage = "ru"
+DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
 Paginate = 3 # this is set low for demonstrating with dummy content. Set to a higher number
 googleAnalytics = ""
