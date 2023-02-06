@@ -23,3 +23,4 @@ email = "artem+podcast@tsatsin.com"
 name = "Artem"
 [params]
 logo = "https://artempodcast.com/logo.png"
+media = "https://media.artempodcast.com/"

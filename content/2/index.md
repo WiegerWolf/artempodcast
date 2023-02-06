@@ -1,10 +1,10 @@
 ---
 title: клиент клиент клиент клиент
 date: 2019-10-25
-audio: 'https://artempodcast-mp3.s3.nl-ams.scw.cloud/2.mp3'
+audio: '2.mp3'
 ---
 - артем и его адаптация к жизни в другой стране
 - как артем с капиталистами воевал
 - технические моменты записи артем подкаста
 
-![студия звукозаписи артема](https://artempodcast-mp3.s3.nl-ams.scw.cloud/2.jpg)
+![студия звукозаписи артема](https://media.artempodcast.com/2.jpg)

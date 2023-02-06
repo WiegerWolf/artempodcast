@@ -2,7 +2,7 @@
 num: 9
 title: "GPT-3, DALL-E и AI"
 date: 2022-08-02
-audio: 'https://artempodcast-mp3.s3.nl-ams.scw.cloud/9.mp3'
+audio: '9.mp3'
 ---
 
 - почти все задачи можно закодировать в текст (и в цифры): рисование, музыка, хореография, не осталось занятий не подверженных автоматизации, это не только для программистов
@@ -23,4 +23,4 @@ audio: 'https://artempodcast-mp3.s3.nl-ams.scw.cloud/9.mp3'
 
 - люди будут платить премиальные за роскошь "настоящего" искусства, в котором ничего не изменено и ничего не сгенерировано
 
-![image](https://artempodcast-mp3.s3.nl-ams.scw.cloud/9.jpg)
+![image](https://media.artempodcast.com/9.jpg)

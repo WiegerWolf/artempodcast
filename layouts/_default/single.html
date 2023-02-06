@@ -7,7 +7,7 @@
     </head>
     <body>
         <audio controls src="{{.Params.Audio}}">
-            <a href="{{.Params.Audio}}">Скачать ogg файл подкаста</a>
+            <a href="{{ .Site.Params.Media }}{{.Params.Audio}}">Скачать mp3 файл подкаста</a>
         </audio>
         {{.Content}}
         {{ partial "footer.html" . }}
