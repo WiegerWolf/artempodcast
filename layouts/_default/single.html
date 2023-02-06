@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode }}">
+    <head>
+        <title>{{.Title}}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <audio controls src="{{.Params.Audio}}">
+            <a href="{{.Params.Audio}}">Скачать ogg файл подкаста</a>
+        </audio>
+        {{.Content}}
+        {{ partial "footer.html" . }}
+    </body>
+</html>

@@ -1,0 +1,5 @@
+#!/bin/bash
+for file in `find content -name *.ogg`; do
+  newfile=`echo $file|sed 's/ogg/mp3/'`
+  ffmpeg -i $file $newfile
+done

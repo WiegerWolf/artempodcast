@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode }}">
+    <head>
+        <title>{{.Title}}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+				{{ range .AlternativeOutputFormats -}}
+						{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+				{{ end -}}
+    </head>
+    <body>
+        <ul>
+          {{ range .Pages }}
+            <li><p><a href="{{.Permalink}}">{{.Title}}</a></p></li>
+          {{ end }}
+        </ul>
+        {{ partial "footer.html" . }}
+    </body>
+</html>

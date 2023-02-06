@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# calculate podcast number
+# or take it from parameter
+if [ -z $1 ]; then
+  N=`ls -1 content/|sort|tail -1`
+  N=$(($N + 1))
+else
+  N=$1
+fi
+
+DATE=`date +%Y-%m-%d`
+
+mkdir -p content/$N
+
+# backup existing recording, just in case
+mv content/$N/$N.ogg content/$N/$N.ogg.bak
+mv content/$N/$N.wav content/$N/$N.wav.bak
+
+# stub content index.md file
+cat << EOF | tee content/$N/index.md
+---
+num: $N
+title: "$(head -1 latest)"
+date: $DATE
+audio: "$N.ogg"
+audioMp3: "$N.mp3"
+---
+EOF
+
+# capture the hw2,0 usb mic
+arecord -i -f cd -D plughw:2,0 content/$N/$N.wav
+# wav -> ogg encode
+oggenc -q 1 \
+  -a ArtemPodcast \
+  -t $N \
+  -l ArtemPodcast.com \
+  -G podcast \
+  content/$N/$N.wav
+
+# play back what's there
+mpv content/$N/$N.ogg
+
+# convert ogg -> mp3
+ffmpeg -i $N.ogg $N.mp3
+
+# show some stats
+ls -lah content/$N/

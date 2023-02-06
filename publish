@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# calculate podcast number
+# or take it from parameter
+if [ -z $1 ]; then
+  N=`ls -1 content/|sort|tail -1`
+else
+  N=$1
+fi
+
+# cleanup backups and raw audio
+rm content/$N/$N.ogg.bak
+rm content/$N/$N.wav content/$N/$N.wav.bak
+
+# remove top topic from latest list
+sed --in-place 1d latest
+
+# add files to git
+git add .
+
+# commit new episode
+git commit -m $N
+
+# push to publish episode
+git push
