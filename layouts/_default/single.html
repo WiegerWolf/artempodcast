@@ -4,12 +4,20 @@
         <title>{{.Title}}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body>
-        <audio controls src="{{ .Site.Params.Media }}{{.Params.Audio}}">
-            <a href="{{ .Site.Params.Media }}{{.Params.Audio}}">Скачать mp3 файл подкаста</a>
-        </audio>
-        {{.Content}}
+        <header>
+            <h1>{{.Title}}</h1>
+        </header>
+        <main>
+            <article>
+                <audio controls src="{{ .Site.Params.Media }}{{.Params.Audio}}">
+                    <a href="{{ .Site.Params.Media }}{{.Params.Audio}}">Скачать mp3 файл подкаста</a>
+                </audio>
+                {{.Content}}
+            </article>
+        </main>
         {{ partial "footer.html" . }}
     </body>
 </html>
