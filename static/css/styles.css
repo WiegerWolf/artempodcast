@@ -61,10 +61,6 @@ ul.podcast-list {
     text-decoration: none;
 }
 
-.podcast-list li a p {
-    margin: 0;
-}
-
 footer {
     background-color: #333;
     border-top: 2px solid #333;
