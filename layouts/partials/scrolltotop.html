@@ -1,0 +1,17 @@
+<button class="scroll-to-top" onclick="scrollToTop()" title="Наверх" type="button">&#8679;</button>
+
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Show or hide the scroll-to-top button based on scroll position
+  const scrollToTopButton = document.querySelector('.scroll-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollToTopButton.style.display = 'block';
+    } else {
+      scrollToTopButton.style.display = 'none';
+    }
+  });
+</script>
