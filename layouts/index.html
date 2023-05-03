@@ -14,9 +14,13 @@
             <h1>{{.Title}}</h1>
         </header>
         <main>
-            <ul>
+            <ul class="podcast-list">
                 {{ range .Pages }}
-                    <li><p><a href="{{.Permalink}}">{{.Title}}</a></p></li>
+                    <li>
+                        <a href="{{.Permalink}}">
+                            <p>{{.Title}}</p>
+                        </a>
+                    </li>
                 {{ end }}
             </ul>
         </main>

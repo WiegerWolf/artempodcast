@@ -34,12 +34,12 @@ main {
     padding: 20px;
 }
 
-ul {
+ul.podcast-list {
     list-style-type: none;
     padding: 0;
 }
 
-li {
+.podcast-list li {
     margin-bottom: 10px;
     background-color: #fff;
     padding: 10px;
@@ -48,19 +48,21 @@ li {
     transition: all 0.3s ease;
 }
 
-li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-a {
+.podcast-list li a {
+    display: block;
+    width: 100%;
+    height: 100%;
     color: #333;
     text-decoration: none;
 }
 
-a:hover {
+.podcast-list li a:hover {
     color: #555;
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+.podcast-list li a p {
+    margin: 0;
 }
 
 footer {
