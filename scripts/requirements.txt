@@ -1,1 +1,3 @@
 moviepy
+requests
+PyYAML
