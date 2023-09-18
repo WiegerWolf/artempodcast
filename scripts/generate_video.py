@@ -41,7 +41,7 @@ def bounce_animation(clip, screen_size):
 
         return position[0] - w / 2, position[1] - h / 2
 
-    return clip.fx(vfx.track_points, fn_pos=update_position, apply_to='mask')
+    return clip.set_position(update_position)
 
 def generate_video(episode_number):
     audio_filename = get_audio_file_from_md(episode_number)
@@ -57,7 +57,7 @@ def generate_video(episode_number):
     video = ColorClip(screen_size, color=(0, 0, 0), duration=audio.duration)
 
     # Load the image and apply the bouncing effect
-    logo = ImageClip(LOGO_PATH).resize(height=200)
+    logo = ImageClip(LOGO_PATH)
     bouncing_logo = bounce_animation(logo, screen_size).set_duration(audio.duration)
 
     # Overlay the bouncing logo on the video
