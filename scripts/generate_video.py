@@ -3,7 +3,7 @@ import sys
 import os
 import requests
 import yaml
-from PIL import Image as PILImage
+from PIL import Image as PILImage, ImageFont as PILImageFont, ImageDraw as PILImageDraw
 import numpy as np
 
 MEDIA_BASE_URL = "https://media.artempodcast.com/"
@@ -73,10 +73,47 @@ def generate_video(episode_number):
     output_file = local_audio_path.replace(".mp3", ".mp4")
     final_clip.write_videofile(output_file, fps=24, codec='libx264', audio_codec='aac', threads=8)
 
+    # Generate thumbnail
+    thumbnail_path = generate_thumbnail(episode_number)
+    print(f"Thumbnail saved at {thumbnail_path}")
+
+def generate_thumbnail(episode_number):
+    # Load base image
+    base_image = PILImage.open(LOGO_PATH)
+    
+    # Define font and size
+    font_path = "../static/FSEX302.ttf"
+    font_size = 100
+    font = PILImageFont.truetype(font_path, font_size)
+
+    # Draw episode number on the base image
+    draw = PILImageDraw.Draw(base_image)
+    text = f"Episode {episode_number}"
+    
+    # Calculate text position (centered)
+    bbox = font.getbbox(text)
+    text_width, text_height = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    x = (base_image.width - text_width) / 2
+    y = (base_image.height - text_height) / 2
+
+    draw.text((x, y), text, font=font, fill="white")
+
+    # Save the image
+    thumbnail_path = os.path.join("/tmp", f"thumbnail_{episode_number}.png")
+    base_image.save(thumbnail_path)
+    
+    return thumbnail_path
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python generate_video.py <episode_number>")
+        print("Usage: python generate_video.py <episode_number> [--thumb]")
         sys.exit(1)
     
     episode_number = sys.argv[1]
-    generate_video(episode_number)
+
+    # Check for --thumb argument
+    if "--thumb" in sys.argv:
+        thumbnail_path = generate_thumbnail(episode_number)
+        print(f"Thumbnail saved at {thumbnail_path}")
+    else:
+        generate_video(episode_number)
