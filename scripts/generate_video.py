@@ -83,12 +83,12 @@ def generate_thumbnail(episode_number):
     
     # Define font and size
     font_path = "../static/FSEX302.ttf"
-    font_size = 100
+    font_size = 600  # Increased font size
     font = PILImageFont.truetype(font_path, font_size)
 
     # Draw episode number on the base image
     draw = PILImageDraw.Draw(base_image)
-    text = f"Episode {episode_number}"
+    text = f"{episode_number}"  # Display only the episode number
     
     # Calculate text position (centered)
     bbox = font.getbbox(text)
@@ -97,7 +97,7 @@ def generate_thumbnail(episode_number):
     y = (base_image.height - text_height) / 2
 
     # Draw a semi-transparent black rectangle behind the text
-    padding = 10  # Padding around the text for the rectangle
+    padding = 20  # Increased padding around the text for the rectangle
     rectangle_coords = [x - padding, y - padding, x + text_width + padding, y + text_height + padding]
     draw.rectangle(rectangle_coords, fill=(0, 0, 0, 128))  # (0, 0, 0, 128) is semi-transparent black
 
