@@ -94,11 +94,11 @@ def generate_thumbnail(episode_number):
     bbox = font.getbbox(text)
     text_width, text_height = bbox[2] - bbox[0], bbox[3] - bbox[1]
     x = (base_image.width - text_width) / 2
-    y = (base_image.height - text_height) / 2
+    y = (base_image.height - text_height) / 2 - text_height * 0.1  # Adjusted vertical position
 
     # Draw a semi-transparent black rectangle behind the text
-    padding = 20  # Increased padding around the text for the rectangle
-    rectangle_coords = [x - padding, y - padding, x + text_width + padding, y + text_height + padding]
+    padding = 20
+    rectangle_coords = [x - padding, y + padding * 2, x + text_width + padding, y + text_height * 1.5 + padding]
     draw.rectangle(rectangle_coords, fill=(0, 0, 0, 128))  # (0, 0, 0, 128) is semi-transparent black
 
     # Draw the text
