@@ -96,6 +96,12 @@ def generate_thumbnail(episode_number):
     x = (base_image.width - text_width) / 2
     y = (base_image.height - text_height) / 2
 
+    # Draw a semi-transparent black rectangle behind the text
+    padding = 10  # Padding around the text for the rectangle
+    rectangle_coords = [x - padding, y - padding, x + text_width + padding, y + text_height + padding]
+    draw.rectangle(rectangle_coords, fill=(0, 0, 0, 128))  # (0, 0, 0, 128) is semi-transparent black
+
+    # Draw the text
     draw.text((x, y), text, font=font, fill="white")
 
     # Save the image
