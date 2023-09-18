@@ -3,6 +3,8 @@ import sys
 import os
 import requests
 import yaml
+from PIL import Image as PILImage
+import numpy as np
 
 MEDIA_BASE_URL = "https://media.artempodcast.com/"
 CONTENT_DIR = "../content/"
@@ -56,8 +58,12 @@ def generate_video(episode_number):
     screen_size = (1920, 1080)
     video = ColorClip(screen_size, color=(0, 0, 0), duration=audio.duration)
 
-    # Load the image and apply the bouncing effect
-    logo = ImageClip(LOGO_PATH)
+    # Load the image with Pillow
+    pil_image = PILImage.open(LOGO_PATH)
+    pil_image_resized = pil_image.resize((300, int(300 * pil_image.height / pil_image.width)))
+
+    # Convert the resized Pillow image back to a moviepy ImageClip
+    logo = ImageClip(np.array(pil_image_resized))
     bouncing_logo = bounce_animation(logo, screen_size).set_duration(audio.duration)
 
     # Overlay the bouncing logo on the video
