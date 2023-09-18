@@ -96,13 +96,13 @@ def generate_thumbnail(episode_number):
     x = (base_image.width - text_width) / 2
     y = (base_image.height - text_height) / 2 - text_height * 0.1  # Adjusted vertical position
 
-    # Draw a semi-transparent black rectangle behind the text
+    # Draw a semi-transparent purple rectangle behind the text
     padding = 20
     rectangle_coords = [x - padding, y + padding * 2, x + text_width + padding, y + text_height * 1.5 + padding]
-    draw.rectangle(rectangle_coords, fill=(0, 0, 0, 128))  # (0, 0, 0, 128) is semi-transparent black
+    draw.rectangle(rectangle_coords, fill="#BD93F9")  # Dracula Purple
 
-    # Draw the text
-    draw.text((x, y), text, font=font, fill="white")
+    # Draw the text in cyan
+    draw.text((x, y), text, font=font, fill="#8BE9FD")  # Dracula Cyan
 
     # Save the image
     thumbnail_path = os.path.join("/tmp", f"thumbnail_{episode_number}.png")
