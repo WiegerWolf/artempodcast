@@ -3,3 +3,6 @@ public/
 themes/ananke
 go.mod
 go.sum
+*.mp3
+*.mp4
+*.mkv
