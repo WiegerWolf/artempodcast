@@ -1,4 +1,5 @@
 from moviepy.editor import *
+import sys
 
 def generate_video(mp3_file, image_file, output_file):
     # Load the audio file
@@ -13,5 +14,13 @@ def generate_video(mp3_file, image_file, output_file):
     # Write the result to a file
     final_clip.write_videofile(output_file, fps=24, codec='libx264', audio_codec='aac')
 
-# Example usage
-generate_video('podcast.mp3', 'cover.jpg', 'output.mp4')
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: python generate_video.py <mp3_file>")
+        sys.exit(1)
+    
+    mp3_file = sys.argv[1]
+    image_file = '../static/logo.png'
+    output_file = mp3_file.replace(".mp3", ".mp4")
+    
+    generate_video(mp3_file, image_file, output_file)
