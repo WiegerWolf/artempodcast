@@ -2,16 +2,6 @@
     "name": "Hugo Dev Container",
     "dockerFile": "Dockerfile",
     "forwardPorts": [1313],
-    "extensions": [
-      "budparr.language-hugo-vscode",
-      "davidanson.vscode-markdownlint",
-      "github.vscode-pull-request-github",
-      "editorconfig.editorconfig",
-      "ms-python.python"
-    ],
-    "settings": {
-      "terminal.integrated.shell.linux": "/bin/sh"
-    },
     "postCreateCommand": "hugo server --bind 0.0.0.0",
     "remoteUser": "user"
   }
