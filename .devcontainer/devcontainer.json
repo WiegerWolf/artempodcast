@@ -13,6 +13,14 @@
 			"version": "lts",
 			"nvmVersion": "latest"
 		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.copilot",
+				"GitHub.copilot-chat"
+			]
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
