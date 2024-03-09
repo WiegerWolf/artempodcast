@@ -71,7 +71,7 @@ def generate_video(episode_number):
     
     # Write the result to a file
     output_file = local_audio_path.replace(".mp3", ".mp4")
-    final_clip.write_videofile(output_file, fps=24, codec='libx264', audio_codec='aac', threads=8)
+    final_clip.write_videofile(output_file, fps=24, codec='libx264', audio_codec='aac', threads=32)
 
     # Generate thumbnail
     thumbnail_path = generate_thumbnail(episode_number)
