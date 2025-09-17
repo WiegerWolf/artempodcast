@@ -18,9 +18,8 @@
 baseURL = "https://artempodcast.com"
 title = "ArtemPodcast"
 languageCode="ru-ru"
-[author]
-email = "u4q59hqf@tsatsin.com"
-name = "Artem"
+
 [params]
 logo = "https://artempodcast.com/logo.png"
 media = "https://media.artempodcast.com/"
+author = {name = "Artem", email = "u4q59hqf@tsatsin.com"}
