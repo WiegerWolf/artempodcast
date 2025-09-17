@@ -14,16 +14,16 @@
     <link>{{ .Permalink }}</link>
     <description>Recent content {{ if ne  .Title  .Site.Title }}{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ .Site.Title }}</description>
     {{ with .Site.LanguageCode }}<language>{{.}}</language>{{end}}
-    {{ with .Site.Author.email }}
+    {{ with .Site.Params.Author.email }}
 			<googleplay:email>{{.}}</googleplay:email>
-			<webMaster>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</webMaster>
-			<managingEditor>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</managingEditor>
+			<webMaster>{{.}}{{ with $.Site.Params.Author.name }} ({{.}}){{end}}</webMaster>
+			<managingEditor>{{.}}{{ with $.Site.Params.Author.name }} ({{.}}){{end}}</managingEditor>
 			<itunes:owner>
-				<itunes:name>{{ with $.Site.Author.name }} ({{.}}){{end}}</itunes:name>
+				<itunes:name>{{ with $.Site.Params.Author.name }} ({{.}}){{end}}</itunes:name>
 				<itunes:email>{{.}}</itunes:email>
 			</itunes:owner>
 		{{end}}
-		{{ with .Site.Author.name }}
+		{{ with .Site.Params.Author.name }}
 			<googleplay:author>{{.}}</googleplay:author>
 			<itunes:author>{{.}}</itunes:author>
 		{{end}}
@@ -48,9 +48,9 @@
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-      {{ with .Site.Author.email }}
-				<dc:creator>{{ with $.Site.Author.name }} ({{.}}){{end}}</dc:creator>
-				<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>
+      {{ with .Site.Params.Author.email }}
+				<dc:creator>{{ with $.Site.Params.Author.name }} ({{.}}){{end}}</dc:creator>
+				<author>{{.}}{{ with $.Site.Params.Author.name }} ({{.}}){{end}}</author>
 			{{end}}
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Summary | plainify }}</description>
