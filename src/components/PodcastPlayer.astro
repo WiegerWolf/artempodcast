@@ -1,0 +1,114 @@
+---
+interface Props {
+  src: string;
+  title: string;
+}
+
+const { src, title } = Astro.props;
+---
+
+<div class="podcast-player bg-zinc-800/50 light:bg-white rounded-xl p-4 border border-zinc-700/50 light:border-zinc-200 shadow-sm" data-src={src}>
+  <audio preload="metadata" src={src}></audio>
+
+  <div class="flex items-center gap-4">
+    <!-- Play/Pause -->
+    <button class="play-btn shrink-0 w-12 h-12 rounded-full bg-indigo-500 hover:bg-indigo-400 text-white flex items-center justify-center transition-colors" type="button" aria-label="Play">
+      <svg class="icon-play w-5 h-5 ml-0.5" viewBox="0 0 24 24" fill="currentColor">
+        <polygon points="5 3 19 12 5 21 5 3"/>
+      </svg>
+      <svg class="icon-pause w-5 h-5 hidden" viewBox="0 0 24 24" fill="currentColor">
+        <rect x="6" y="4" width="4" height="16"/>
+        <rect x="14" y="4" width="4" height="16"/>
+      </svg>
+    </button>
+
+    <div class="flex-1 min-w-0">
+      <!-- Progress bar -->
+      <div class="progress-container relative w-full h-2 bg-zinc-700 light:bg-zinc-200 rounded-full cursor-pointer group">
+        <div class="progress-bar h-full bg-indigo-500 rounded-full transition-[width] duration-100" style="width: 0%"></div>
+        <div class="progress-knob absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity" style="left: 0%"></div>
+      </div>
+
+      <!-- Time + controls -->
+      <div class="flex items-center justify-between mt-2 text-xs text-zinc-400">
+        <span class="time-current">0:00</span>
+        <div class="flex items-center gap-3">
+          <button class="speed-btn hover:text-white transition-colors font-mono" type="button">1x</button>
+          <a href={src} download class="hover:text-white transition-colors" title="Скачать" aria-label="Download episode">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </a>
+        </div>
+        <span class="time-duration">0:00</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.querySelectorAll('.podcast-player').forEach(function(player) {
+    var audio = player.querySelector('audio');
+    var playBtn = player.querySelector('.play-btn');
+    var iconPlay = player.querySelector('.icon-play');
+    var iconPause = player.querySelector('.icon-pause');
+    var progressContainer = player.querySelector('.progress-container');
+    var progressBar = player.querySelector('.progress-bar');
+    var progressKnob = player.querySelector('.progress-knob');
+    var timeCurrent = player.querySelector('.time-current');
+    var timeDuration = player.querySelector('.time-duration');
+    var speedBtn = player.querySelector('.speed-btn');
+    var speeds = [1, 1.25, 1.5, 1.75, 2, 0.75];
+    var speedIndex = 0;
+
+    function formatTime(s) {
+      if (isNaN(s)) return '0:00';
+      var m = Math.floor(s / 60);
+      var sec = Math.floor(s % 60);
+      return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    playBtn.addEventListener('click', function() {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener('play', function() {
+      iconPlay.classList.add('hidden');
+      iconPause.classList.remove('hidden');
+    });
+
+    audio.addEventListener('pause', function() {
+      iconPlay.classList.remove('hidden');
+      iconPause.classList.add('hidden');
+    });
+
+    audio.addEventListener('loadedmetadata', function() {
+      timeDuration.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener('timeupdate', function() {
+      var pct = (audio.currentTime / audio.duration) * 100 || 0;
+      progressBar.style.width = pct + '%';
+      progressKnob.style.left = pct + '%';
+      timeCurrent.textContent = formatTime(audio.currentTime);
+    });
+
+    progressContainer.addEventListener('click', function(e) {
+      var rect = progressContainer.getBoundingClientRect();
+      var pct = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = pct * audio.duration;
+    });
+
+    speedBtn.addEventListener('click', function() {
+      speedIndex = (speedIndex + 1) % speeds.length;
+      audio.playbackRate = speeds[speedIndex];
+      speedBtn.textContent = speeds[speedIndex] + 'x';
+    });
+  });
+</script>

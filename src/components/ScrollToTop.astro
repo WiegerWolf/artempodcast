@@ -1,0 +1,32 @@
+---
+---
+
+<button
+  id="scroll-to-top"
+  class="fixed bottom-6 right-6 w-10 h-10 bg-zinc-800 light:bg-white text-zinc-400 hover:text-white light:hover:text-zinc-900 border border-zinc-700 light:border-zinc-200 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none z-40"
+  type="button"
+  title="Наверх"
+  aria-label="Scroll to top"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<script is:inline>
+  (function() {
+    var btn = document.getElementById('scroll-to-top');
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      } else {
+        btn.style.opacity = '0';
+        btn.style.pointerEvents = 'none';
+      }
+    });
+    btn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+</script>

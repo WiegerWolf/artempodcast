@@ -1,8 +1,6 @@
-public/
-.hugo_build.lock
-themes/ananke
-go.mod
-go.sum
+node_modules/
+dist/
+.astro/
 *.mp3
 *.mp4
 *.mkv

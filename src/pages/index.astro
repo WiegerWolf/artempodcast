@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+
+const episodes = (await getCollection('episodes')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout title="ArtemPodcast">
+  <div class="space-y-3">
+    {episodes.map((ep) => (
+      <EpisodeCard
+        slug={ep.id}
+        title={ep.data.title}
+        date={ep.data.date}
+        num={ep.data.num}
+      />
+    ))}
+  </div>
+</BaseLayout>
