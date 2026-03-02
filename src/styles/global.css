@@ -5,36 +5,14 @@
 
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --color-brand: #6366f1;
-  --color-brand-light: #818cf8;
 }
 
-/* Dark mode base */
-body {
-  @apply bg-zinc-900 text-zinc-100 transition-colors duration-300;
-}
-body:where(.light, .light *) {
-  @apply bg-zinc-50 text-zinc-900;
+/* Smooth theme transitions */
+html {
+  transition: background-color 0.2s, color 0.2s;
 }
 
-/* Prose overrides for dark mode */
-.prose {
-  --tw-prose-body: theme(--color-zinc-300);
-  --tw-prose-headings: theme(--color-zinc-100);
-  --tw-prose-links: theme(--color-indigo-400);
-  --tw-prose-bold: theme(--color-zinc-100);
-  --tw-prose-bullets: theme(--color-zinc-500);
-  --tw-prose-quotes: theme(--color-zinc-300);
-  --tw-prose-quote-borders: theme(--color-zinc-600);
-  --tw-prose-code: theme(--color-indigo-300);
-}
-.light .prose {
-  --tw-prose-body: theme(--color-zinc-700);
-  --tw-prose-headings: theme(--color-zinc-900);
-  --tw-prose-links: theme(--color-indigo-600);
-  --tw-prose-bold: theme(--color-zinc-900);
-  --tw-prose-bullets: theme(--color-zinc-400);
-  --tw-prose-quotes: theme(--color-zinc-600);
-  --tw-prose-quote-borders: theme(--color-zinc-300);
-  --tw-prose-code: theme(--color-indigo-600);
+/* Selection color */
+::selection {
+  background-color: rgb(99 102 241 / 0.3);
 }

@@ -13,7 +13,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,19 +36,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       gtag('config', 'G-BS61F0LQS6');
     </script>
 
-    <!-- Dark mode init (prevent flash) -->
+    <!-- Theme init (prevent flash) -->
     <script is:inline>
       (function() {
-        var theme = localStorage.getItem('theme');
-        if (theme === 'light') {
-          document.documentElement.classList.add('light');
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.classList.remove('dark');
         }
       })();
     </script>
   </head>
-  <body>
+  <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 min-h-screen flex flex-col">
     <Header />
-    <main class="max-w-3xl mx-auto px-4 py-8">
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12 flex-1 w-full">
       <slot />
     </main>
     <Footer />

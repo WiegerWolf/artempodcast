@@ -2,9 +2,10 @@
 const email = 'u4q59hqf@tsatsin.com';
 ---
 
-<footer class="bg-zinc-950 border-t border-zinc-800 py-6 mt-12">
-  <div class="max-w-3xl mx-auto px-4 flex items-center justify-center gap-6 text-sm text-zinc-400">
-    <a href={`mailto:${email}`} class="hover:text-white transition-colors">{email}</a>
-    <a href="/index.xml" class="hover:text-orange-400 transition-colors">RSS</a>
+<footer class="border-t border-zinc-200 dark:border-zinc-800 py-8 mt-auto">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 flex items-center justify-center gap-6 text-sm text-zinc-400 dark:text-zinc-500">
+    <a href={`mailto:${email}`} class="hover:text-zinc-900 dark:hover:text-white transition-colors">{email}</a>
+    <span class="text-zinc-200 dark:text-zinc-700">|</span>
+    <a href="/index.xml" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">RSS</a>
   </div>
 </footer>
