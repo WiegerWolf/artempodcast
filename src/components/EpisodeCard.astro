@@ -19,7 +19,7 @@ const formattedDate = date.toLocaleDateString('ru-RU', {
     <div class="flex items-center justify-between gap-4">
       <div class="min-w-0">
         <h2 class="text-base font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
-          {num !== undefined && <span class="text-zinc-400 dark:text-zinc-500 font-normal">#{num}&ensp;</span>}
+          <span class="text-zinc-400 dark:text-zinc-500 font-normal">#{num ?? slug}&ensp;</span>
           {title}
         </h2>
         <time class="text-sm text-zinc-400 dark:text-zinc-500 mt-0.5 block" datetime={date.toISOString()}>
